@@ -12,7 +12,6 @@ public class Started {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Started.class, args);
-
 	}
 
 }

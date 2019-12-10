@@ -16,7 +16,7 @@ import uy.org.pmarket.shopping.model.ShoppingMissing;
 import uy.org.pmarket.shopping.repository.ShoppingMissingRepository;
 
 @Service
-public class ShoppingMissingService extends MessageService<ShoppingMissing>{
+public class ShoppingMissingService extends MessageService<ShoppingMissing> {
 
 	@Autowired
 	private ShoppingMissingMapper missingMapper;

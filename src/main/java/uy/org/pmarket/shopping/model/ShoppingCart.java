@@ -1,5 +1,7 @@
 package uy.org.pmarket.shopping.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +13,9 @@ public class ShoppingCart extends Shopping {
 	private String store;
 	private String chain;
 	private String qr;
+	private StatusCart state;
+	private String shoppingMissingId;
+	private List<Audience> audiences;
 	
 	public Long getId() {
 		return id;
@@ -35,6 +40,24 @@ public class ShoppingCart extends Shopping {
 	}
 	public void setQr(String qr) {
 		this.qr = qr;
+	}
+	public StatusCart getState() {
+		return state;
+	}
+	public void setState(StatusCart state) {
+		this.state = state;
+	}
+	public String getShoppingMissingId() {
+		return shoppingMissingId;
+	}
+	public void setShoppingMissingId(String shoppingMissingId) {
+		this.shoppingMissingId = shoppingMissingId;
+	}
+	public List<Audience> getAudiences() {
+		return audiences;
+	}
+	public void setAudiences(List<Audience> audiences) {
+		this.audiences = audiences;
 	}
 	
 }

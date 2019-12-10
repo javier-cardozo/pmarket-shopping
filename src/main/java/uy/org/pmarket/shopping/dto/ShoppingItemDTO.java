@@ -6,6 +6,7 @@ public class ShoppingItemDTO {
 	private Integer quantity;
 	private String category;
 	private Double price;
+	private String promotionId;
 	
 	public String getProduct() {
 		return product;
@@ -30,6 +31,12 @@ public class ShoppingItemDTO {
 	}
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	public String getPromotionId() {
+		return promotionId;
+	}
+	public void setPromotionId(String promotionId) {
+		this.promotionId = promotionId;
 	}
 	
 	

@@ -3,18 +3,28 @@ package uy.org.pmarket.shopping.dto;
 import java.util.Date;
 import java.util.List;
 
-import uy.org.pmarket.shopping.model.Audience;
+import javax.validation.constraints.NotEmpty;
+
+import uy.org.pmarket.shopping.model.ShoppingItem;
 
 public class ShoppingCartDTO {
 
 	private Long id;
+	@NotEmpty
 	private String store;
+	@NotEmpty
 	private String chain;
 	private String qr;
 	private String name;
-	private List<Audience> audiences;
+	private List<AudienceDTO> audiences;
+	@NotEmpty
+	private Boolean eliminated;
+	@NotEmpty
+	private String shoppingMissingId;
+	private List<ShoppingItem> items;
 	private Date created;
 	private Date updated;
+	private String version;
 	
 	public Long getId() {
 		return id;
@@ -46,12 +56,6 @@ public class ShoppingCartDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Audience> getAudiences() {
-		return audiences;
-	}
-	public void setAudiences(List<Audience> audiences) {
-		this.audiences = audiences;
-	}
 	public Date getCreated() {
 		return created;
 	}
@@ -63,6 +67,36 @@ public class ShoppingCartDTO {
 	}
 	public void setUpdated(Date updated) {
 		this.updated = updated;
+	}
+	public List<AudienceDTO> getAudiences() {
+		return audiences;
+	}
+	public void setAudiences(List<AudienceDTO> audiences) {
+		this.audiences = audiences;
+	}
+	public Boolean getEliminated() {
+		return eliminated;
+	}
+	public void setEliminated(Boolean eliminated) {
+		this.eliminated = eliminated;
+	}
+	public String getShoppingMissingId() {
+		return shoppingMissingId;
+	}
+	public void setShoppingMissingId(String shoppingMissingId) {
+		this.shoppingMissingId = shoppingMissingId;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public List<ShoppingItem> getItems() {
+		return items;
+	}
+	public void setItems(List<ShoppingItem> items) {
+		this.items = items;
 	}
 	
 }

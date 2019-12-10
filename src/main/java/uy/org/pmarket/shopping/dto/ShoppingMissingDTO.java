@@ -2,15 +2,20 @@ package uy.org.pmarket.shopping.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+
 public class ShoppingMissingDTO {
 
 	private String id;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private AudienceDTO audience;
 	private Date created;
 	private Date updated;
 	private Date expired;
 	private ShoppingSummary summary;
+	@NotEmpty
 	private Boolean eliminated;
 	private String version;
 	
