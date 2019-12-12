@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ShoppingCart extends Shopping {
 
 	@Id
-	private Long id;
+	private String id;
 	private String store;
 	private String chain;
 	private String qr;
@@ -17,10 +17,10 @@ public class ShoppingCart extends Shopping {
 	private String shoppingMissingId;
 	private List<Audience> audiences;
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getStore() {

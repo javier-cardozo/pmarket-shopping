@@ -9,7 +9,7 @@ import uy.org.pmarket.shopping.model.ShoppingItem;
 
 public class ShoppingCartDTO {
 
-	private Long id;
+	private String id;
 	@NotEmpty
 	private String store;
 	@NotEmpty
@@ -26,10 +26,10 @@ public class ShoppingCartDTO {
 	private Date updated;
 	private String version;
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getStore() {

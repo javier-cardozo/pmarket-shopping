@@ -2,17 +2,18 @@ package uy.org.pmarket.shopping.model;
 
 public class ShoppingItem {
 
-	private String product;
+	private String code;
 	private Integer quantity;
 	private String category;
 	private Double price;
 	private String promotionId;
 	
-	public String getProduct() {
-		return product;
+	
+	public String getCode() {
+		return code;
 	}
-	public void setProduct(String product) {
-		this.product = product;
+	public void setCode(String code) {
+		this.code = code;
 	}
 	public Integer getQuantity() {
 		return quantity;

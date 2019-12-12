@@ -5,14 +5,15 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import uy.org.pmarket.shopping.dto.ShoppingCartDTO;
 import uy.org.pmarket.shopping.dto.ShoppingCartPromotionDTO;
 import uy.org.pmarket.shopping.dto.ShoppingItemDTO;
 import uy.org.pmarket.shopping.dto.ShoppingMissingDTO;
@@ -30,26 +31,41 @@ public class ShoppingController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
-	@PostMapping(value= "/save")
+	@PostMapping(value= "/missing/save")
 	public ShoppingMissingDTO save(@Valid @RequestBody ShoppingMissingDTO dto) throws ShoppingMissingException {	
 		return shoppingMissingService.save(dto);
 	}
 	
-	@GetMapping(value= "/audience/search/{user}")
+	@GetMapping(value= "/missing/audience/search/{user}")
 	public List<ShoppingMissingDTO> audience(@RequestParam String user){
 		return shoppingMissingService.search(user);
+	}
+	
+	@PutMapping(value= "/missing/item/{shoppingMissingId}/")
+	public void saveItem(@RequestParam String shoppingMissingId, @Valid @RequestBody ShoppingItemDTO dto) throws ShoppingMissingException {	
+		
+	}
+	
+	@DeleteMapping(value= "/missing/item/{shoppingMissingId}/")
+	public void deleteItem(@RequestParam String shoppingMissingId, @Valid @RequestBody ShoppingItemDTO dto) throws ShoppingMissingException {	
+		
 	}
 	
 	@PostMapping(value= "/enter/chain/{chain}/store/{store}/user/{user}")
 	public ShoppingCartPromotionDTO enterInStore(@RequestParam String chain, @RequestParam String store, 
 			@Valid @RequestBody ShoppingMissingDTO dto, @RequestParam String user) {	
-		return shoppingCartService.enterInStore(dto);
+		return shoppingCartService.enterInStore(dto, chain, store);
 	}
 	
 	@PostMapping(value= "/cart/chain/{chain}/store/{store}/product/search")
 	public ShoppingPromotionItemDTO searchProductCart(@RequestParam String chain, @RequestParam String store, 
 			@Valid @RequestBody ShoppingItemDTO dto) {
-		return null;
+		return shoppingCartService.searchProductCart(dto, chain, store);
 	}
 	
+	@PostMapping(value= "/cart/chain/{chain}/store/{store}/shopping/{shoppingCartId}/product/save")
+	public ShoppingItemDTO saveProductCart(@RequestParam String chain, @RequestParam String store, 
+			@RequestParam String shoppingCartId, @Valid @RequestBody ShoppingItemDTO dto) {
+		return null;
+	}
 }

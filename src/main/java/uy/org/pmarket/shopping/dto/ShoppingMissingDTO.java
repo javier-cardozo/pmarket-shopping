@@ -1,6 +1,7 @@
 package uy.org.pmarket.shopping.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -17,6 +18,7 @@ public class ShoppingMissingDTO {
 	private ShoppingSummary summary;
 	@NotEmpty
 	private Boolean eliminated;
+	private List<ShoppingItemDTO> items;
 	private String version;
 	
 	public String getId() {
@@ -75,6 +77,12 @@ public class ShoppingMissingDTO {
 	}
 	public void setVersion(String version) {
 		this.version = version;
+	}
+	public List<ShoppingItemDTO> getItems() {
+		return items;
+	}
+	public void setItems(List<ShoppingItemDTO> items) {
+		this.items = items;
 	}
 	
 }
