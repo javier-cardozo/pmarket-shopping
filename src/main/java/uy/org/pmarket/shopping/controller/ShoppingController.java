@@ -18,7 +18,7 @@ import uy.org.pmarket.shopping.dto.ShoppingCartPromotionDTO;
 import uy.org.pmarket.shopping.dto.ShoppingItemDTO;
 import uy.org.pmarket.shopping.dto.ShoppingMissingDTO;
 import uy.org.pmarket.shopping.dto.ShoppingPromotionItemDTO;
-import uy.org.pmarket.shopping.exception.ShoppingMissingException;
+import uy.org.pmarket.shopping.exception.ShoppingException;
 import uy.org.pmarket.shopping.service.ShoppingCartService;
 import uy.org.pmarket.shopping.service.ShoppingMissingService;
 
@@ -32,7 +32,7 @@ public class ShoppingController {
 	private ShoppingCartService shoppingCartService;
 	
 	@PostMapping(value= "/missing/save")
-	public ShoppingMissingDTO save(@Valid @RequestBody ShoppingMissingDTO dto) throws ShoppingMissingException {	
+	public ShoppingMissingDTO save(@Valid @RequestBody ShoppingMissingDTO dto) throws ShoppingException {	
 		return shoppingMissingService.save(dto);
 	}
 	
@@ -42,13 +42,13 @@ public class ShoppingController {
 	}
 	
 	@PutMapping(value= "/missing/item/{shoppingMissingId}/")
-	public void saveItem(@RequestParam String shoppingMissingId, @Valid @RequestBody ShoppingItemDTO dto) throws ShoppingMissingException {	
-		
+	public ShoppingMissingDTO saveItem(@RequestParam String shoppingMissingId, @Valid @RequestBody ShoppingItemDTO dto) throws ShoppingException {	
+		return shoppingMissingService.saveItem(shoppingMissingId, dto);
 	}
 	
 	@DeleteMapping(value= "/missing/item/{shoppingMissingId}/")
-	public void deleteItem(@RequestParam String shoppingMissingId, @Valid @RequestBody ShoppingItemDTO dto) throws ShoppingMissingException {	
-		
+	public ShoppingMissingDTO deleteItem(@RequestParam String shoppingMissingId, @Valid @RequestBody ShoppingItemDTO dto) throws ShoppingException {	
+		return shoppingMissingService.deleteItem(shoppingMissingId, dto);
 	}
 	
 	@PostMapping(value= "/enter/chain/{chain}/store/{store}/user/{user}")
@@ -63,7 +63,7 @@ public class ShoppingController {
 		return shoppingCartService.searchProductCart(dto, chain, store);
 	}
 	
-	@PostMapping(value= "/cart/chain/{chain}/store/{store}/shopping/{shoppingCartId}/product/save")
+	@PutMapping(value= "/cart/chain/{chain}/store/{store}/shopping/{shoppingCartId}/product/save")
 	public ShoppingItemDTO saveProductCart(@RequestParam String chain, @RequestParam String store, 
 			@RequestParam String shoppingCartId, @Valid @RequestBody ShoppingItemDTO dto) {
 		return null;
